@@ -624,8 +624,9 @@ const ZiglingStep = struct {
 
         const argv = [_][]const u8{exe_file};
 
-        const child = std.ChildProcess.init(&argv, self.builder.allocator) catch unreachable;
-        defer child.deinit();
+        // const child = std.ChildProcess.init(&argv, self.builder.allocator) catch unreachable;
+        var child = std.ChildProcess.init(&argv, self.builder.allocator);
+        // defer child.deinit();
 
         child.cwd = cwd;
         child.env_map = self.builder.env_map;
